@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/css/singup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <div class="hero">
+        <div class="login_form">
+            <h1>ลงทะเบียน</h1>
+            <form class="input_box" onsubmit="return goToForm(event)">
+                <input type="text" class="field" placeholder="ชื่อโรงเรียน" required>
+                <input type="email" class="field" placeholder="อีเมล์" required>
+                <input type="password" class="field" id="password" placeholder="รหัสผ่าน" maxlength="10" required>
+                <input type="password" class="field" id="confirm_password" placeholder="ยืนยันรหัสผ่าน" maxlength="10" required>
+                <br>
+                <br>
+                <p id="error_msg" style="color: red; display: none;">❌ รหัสผ่านไม่ตรงกัน</p>
+                <button type="submit" class="submit_btn">ลงทะเบียน</button>
+                <br>
+                <div class="tag">
+                    <span>ผู้ใช้ใหม่</span>
+                    <a href="login.html">เข้าสู่ระบบ</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function goToForm(event) {
+            event.preventDefault(); // ป้องกันฟอร์มส่งค่าแบบปกติ
+
+            // ดึงค่าจาก input
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirm_password").value;
+            let errorMsg = document.getElementById("error_msg");
+
+            // ตรวจสอบว่ารหัสผ่านตรงกันหรือไม่
+            if (password !== confirmPassword) {
+                errorMsg.style.display = "block"; // แสดงข้อความ error
+                return false; // หยุดการเปลี่ยนหน้า
+            }
+
+            // ถ้าตรงกัน ให้ไปที่ form.html
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+</html>

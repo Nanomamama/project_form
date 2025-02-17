@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบฟอร์มข้อมูลโรงเรียน</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/hero.css">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
+
+<body>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+        :root {
+            --main-color: #5342ed;
+            --light-color: #f7f7f7;
+            --grey-color: #9f9f9f;
+            --dark-color: #000000;
+            --primary-color: #a93df6;
+            --secondary-color: #D63384;
+            --darkprimary-color: #4B0082;
+        }
+
+        /* สไตล์แท็บ */
+        .tab {
+            overflow: hidden;
+            background-color: var(--darkprimary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+        body {
+            padding-top: 60px;
+        }
+
+        /* ปุ่มของแท็บ */
+        .tab button {
+            background-color: inherit;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+            color: var(--secondary-color);
+        }
+
+        /* เปลี่ยนสีเมื่อ hover */
+        .tab button:hover {
+            color: var(--light-color);
+            transition: 0.3s;
+            border-radius: 10px;
+        }
+
+        /* เมื่อแท็บถูกเลือก */
+        .tab button.active {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            border-radius: 10px;
+        }
+
+        /* สำหรับหน้าจอเล็กลง (เช่น มือถือ) */
+        @media (max-width: 768px) {
+            .tab {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .tab button {
+                width: 100%;
+                padding: 12px 0;
+                text-align: center;
+            }
+            body {
+                padding-top: 120px;
+            }
+        }
+
+        .logo-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 2rem 0;
+        }
+
+        .hero-logo-form {
+            max-width: 180px;
+            width: 200px;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .hero-logo-form {
+                max-width: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-logo-form {
+                max-width: 100px;
+            }
+        }
+
+    </style>
+    </head>
+
+    <body>
+
+        <!-- ปุ่มแท็บ -->
+        <div class="tab ">
+            <button class="tablinks" onclick="openTab(event, 'Tab1')">แบบฟอร์มข้อมูลโรงเรียน</button>
+            <button class="tablinks" onclick="openTab(event, 'Tab2')">ข้อมูลบุคลากร</button>
+            <button class="tablinks" onclick="openTab(event, 'Tab3')">เกียรติคุณที่โรงเรียนได้รับ</button>
+            <button class="tablinks" onclick="openTab(event, 'Tab4')">นักศึกษาฝึกปฏิบัติ</button>
+            <button class="tablinks" onclick="openTab(event, 'Tab5')">ข้อมูลครูที่จะเป็นครูพี่เลี้ยง</button>
+        </div>
+
+        <div class="hero">
+            <video autoplay loop muted [playsinline]>
+                <source src="#" type="video/mp4">
+            </video>
+            <!-- Logo -->
+            <div class="logo">
+                <img src="/image/img01.png" alt="Logo" class="hero-logo">
+            </div>
+            <div class="hero-contact">
+                <h1>ใบสมัครเข้าร่วมโครงการโรงเรียนเครือข่ายร่วม<br>พัฒนาวิชาชีพครู<br>สำหรับนักศึกษาหลักสูตร 4 ปี</h1>
+                <p>ศูนย์ฝึกประสบการณ์วิชาชีพครู คณะครุศาสตร์ มหาวิทยาลัยราชภัฏเลย</p>
+                <!-- <div class="button-2">
+                    <div class="b1">
+                        <button class="btn">เริ่มต้นการใช้</button>
+                    </div>
+                    <div class="b2">
+                        <button class="btn">เรียนรู้เพิ่มเติม</button>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+
+        <!-- เนื้อหาแท็บ -->
+        <div id="Tab1" class="tabcontent">
+            <div class="container">
+                <div class="form-container">
+                    <!-- แบบฟอร์มข้อมูลโรงเรียน -->
+                    <div class="logo-form">
+                        <img src="/image/img01.png" alt="Logo" class="hero-logo-form">
+                    </div>
+                    <h2 class="text-center" id="form-section">แบบฟอร์มข้อมูลโรงเรียน</h2>
+                    <form id="schoolForm" action="#" method="POST">
+                        <div class="mb-3">
+                            <label for="schoolName" class="form-label">ชื่อโรงเรียน</label>
+                            <input type="text" class="form-control w-100" name="schoolName" id="schoolName" required
+                                title="กรุณากรอกชื่อโรงเรียน">
+                        </div>
+                        <div class="mb-3">
+                            <label for="affiliation" class="form-label">สังกัด</label>
+                            <input type="text" class="form-control w-100" name="affiliation" id="affiliation" required
+                                title="กรุณากรอกสังกัดของโรงเรียน">
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">ที่อยู่ เลขที่</label>
+                            <textarea type="text" class="form-control w-100" name="address" id="address" required
+                                title="กรุณากรอกที่อยู่"> </textarea>
+                        </div>
+
+                        <!-- Dropdown สำหรับจังหวัด -->
+                        <div class="mb-3">
+                            <label for="province" class="form-label">จังหวัด</label>
+                            <select class="form-control w-100" name="province" id="province" onchange="updateAmphur()"
+                                required>
+                                <option value="">เลือกจังหวัด</option>
+                            </select>
+                        </div>
+
+                        <!-- Dropdown สำหรับอำเภอ -->
+                        <div class="mb-3">
+                            <label for="district" class="form-label">อำเภอ</label>
+                            <select class="form-control w-100" name="district" id="district" onchange="updateTambon()"
+                                required>
+                                <option value="">เลือกอำเภอ</option>
+                            </select>
+                        </div>
+
+                        <!-- Dropdown สำหรับตำบล -->
+                        <div class="mb-3">
+                            <label for="subdistrict" class="form-label">ตำบล</label>
+                            <select class="form-control w-100" name="subdistrict" id="subdistrict" required>
+                                <option value="">เลือกตำบล</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="postalCode" class="form-label">รหัสไปรษณีย์</label>
+                            <input type="text" class="form-control w-100" name="postalCode" id="postalCode" required
+                                pattern="\d{5}" maxlength="5" title="กรุณากรอกรหัสไปรษณีย์ 5 หลัก">
+                        </div>
+                        <div class="mb-3">
+                            <label for="workPhone" class="form-label">โทรศัพท์ (ที่ทำงาน)</label>
+                            <input type="tel" class="form-control w-100" name="workPhone" id="workPhone" required
+                                pattern="\d{9,10}" maxlength="10" title="กรุณากรอกหมายเลขโทรศัพท์ 9-10 หลัก">
+                        </div>
+                        <div class="mb-3">
+                            <label for="director" class="form-label">ชื่อผู้อำนวยการ / ผู้บริหารสถานศึกษา</label>
+                            <input type="text" class="form-control w-100" name="director" id="director" required
+                                title="กรุณากรอกชื่อผู้อำนวยการหรือผู้บริหาร">
+                        </div>
+                        <div class="mb-3">
+                            <label for="mobilePhone" class="form-label">โทรศัพท์ (มือถือ)</label>
+                            <input type="tel" class="form-control w-100" name="mobilePhone" id="mobilePhone" required
+                                pattern="\d{10}" maxlength="10" title="กรุณากรอกหมายเลขโทรศัพท์ 10 หลัก">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="email" class="form-control w-100" name="email" id="email" required
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="กรุณากรอกอีเมลที่ถูกต้อง">
+                        </div>
+                    </form>
+                    <!-- ข้อมูลพื้นฐาน -->
+                    <h4 class="mt-4">ข้อมูลพื้นฐาน</h4>
+                    <div class="mb-3">
+                        <label for="distanceFromUniversity" class="form-label">
+                            ระยะทางจากมหาวิทยาลัยราชภัฏเลยถึงโรงเรียน (กิโลเมตร)
+                        </label>
+                        <input type="number" class="form-control" name="distanceFromUniversity"
+                            id="distanceFromUniversity" title="กรุณากรอกระยะทางจากมหาวิทยาลัยถึงโรงเรียน" min="0">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="distanceFromDistrict" class="form-label">
+                            ระยะทางจากอำเภอถึงโรงเรียน (กิโลเมตร)
+                        </label>
+                        <input type="number" class="form-control" name="distanceFromDistrict" id="distanceFromDistrict"
+                            title="กรุณากรอกระยะทางจากอำเภอถึงโรงเรียน" min="0">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">การเดินทาง</label><br>
+                        <input type="radio" id="bus" name="transport" value="มีรถประจำทาง">
+                        <label for="bus">มีรถประจำทาง</label><br>
+                        <input type="radio" id="no-bus" name="transport" value="ไม่มีรถประจำทาง">
+                        <label for="no-bus">ไม่มีรถประจำทาง</label><br>
+                        <input type="radio" id="other-transport" name="transport" value="อื่น ๆ">
+                        <label for="other-transport">อื่น ๆ (ระบุ)</label>
+                        <textarea class="form-control mt-2" name="otherTransport" id="otherTransportInput" rows="3"
+                            placeholder="กรอกรายละเอียด"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">หากนักศึกษาไปปฏิบัติการสอน</label><br>
+                        <input type="radio" id="accommodation" name="facility" value="มีที่พัก">
+                        <label for="accommodation">มีที่พัก</label><br>
+                        <input type="radio" id="no-accommodation" name="facility" value="ไม่มีที่พัก">
+                        <label for="no-accommodation">ไม่มีที่พัก</label><br>
+                        <input type="radio" id="lunch" name="facility" value="อาหารกลางวัน">
+                        <label for="lunch">อาหารกลางวัน</label><br>
+                        <input type="radio" id="other-facility" name="facility" value="อื่น ๆ">
+                        <label for="other-facility">อื่น ๆ (ระบุ)</label>
+                        <textarea class="form-control mt-2" name="otherFacility" id="otherFacilityInput" rows="3"
+                            placeholder="กรอกรายละเอียด"></textarea>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">ผลการประเมินคุณภาพ จาก สมศ.</label><br>
+                        <input type="radio" id="round3" name="evaluation" value="รอบ 3">
+                        <label for="round3">รอบ 3</label>
+                        <input type="radio" id="round4" name="evaluation" value="รอบ 4">
+                        <label for="round4">รอบ 4</label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">ข้อมูล ณ วันที่</label>
+                        <input type="date" class="form-control" name="dataDate" id="dataDate" title="Select a date">
+
+                    </div>
+                    <!-- ระดับการศึกษา -->
+                    <div class="mb-3">
+                        <label class="form-label">ระดับการศึกษา</label>
+                        <br>
+                        <br>
+                        <!-- ปฐมวัย -->
+                        <input type="radio" id="preschool" name="educationLevel" value="ปฐมวัย"
+                            onchange="showDropdown('preschoolLevel')">
+                        <label for="preschool">ปฐมวัย</label>
+                        <select class="form-control mt-2 d-none" name="preschoolLevel" id="preschoolLevel"
+                            title="เลือกระดับการศึกษา">
+                            <option value="">เลือกระดับชั้น...</option>
+                            <option value="อนุบาล 1">อนุบาล 1</option>
+                            <option value="อนุบาล 2">อนุบาล 2</option>
+                            <option value="อนุบาล 3">อนุบาล 3</option>
+                        </select>
+                        <br>
+                        <br>
+                        <!-- ประถมศึกษา -->
+                        <input type="radio" id="primary" name="educationLevel" value="ประถมศึกษา"
+                            onchange="showDropdown('primaryLevel')">
+                        <label for="primary">ประถมศึกษา</label>
+                        <select class="form-control mt-2 d-none" name="primaryLevel" id="primaryLevel"
+                            title="เลือกระดับการศึกษา">
+                            <option value="">เลือกระดับชั้น...</option>
+                            <option value="ป.1">ป.1</option>
+                            <option value="ป.2">ป.2</option>
+                            <option value="ป.3">ป.3</option>
+                            <option value="ป.4">ป.4</option>
+                            <option value="ป.5">ป.5</option>
+                            <option value="ป.6">ป.6</option>
+                        </select>
+                        <br>
+                        <br>
+                        <!-- มัธยมศึกษา -->
+                        <input type="radio" id="secondary" name="educationLevel" value="มัธยมศึกษา"
+                            onchange="showDropdown('secondaryLevel')">
+                        <label for="secondary">มัธยมศึกษา</label>
+                        <select class="form-control mt-2 d-none" name="secondaryLevel" id="secondaryLevel"
+                            title="เลือกระดับการศึกษา">
+                            <option value="">เลือกระดับชั้น...</option>
+                            <option value="ม.1">ม.1</option>
+                            <option value="ม.2">ม.2</option>
+                            <option value="ม.3">ม.3</option>
+                            <option value="ม.4">ม.4</option>
+                            <option value="ม.5">ม.5</option>
+                            <option value="ม.6">ม.6</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="mb-3">
+                        <label class="form-label">แนบหนังสือรับรองผลการประเมินจาก สมศ.</label>
+                        <input type="file" class="form-control" name="evaluationDocument" id="evaluationDocument"
+                            title="เลือกระดับการศึกษา">
+                    </div>
+                    <!-- ปุ่มบันทึกข้อมูลแบบฟอร์ม -->
+                    <br>
+                    <button type="submit" id="registerButton"
+                        class="btn btn-primary w-100 py-3 shadow-lg rounded">บันทึกข้อมูล
+                    </button>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div id="Tab2" class="tabcontent">
+            <div class="container">
+                <div class="form-container">
+                    <div class="logo-form">
+                        <img src="/image/img01.png" alt="Logo" class="hero-logo-form">
+                    </div>
+                    <!-- ข้อมูลบุคลากร -->
+                    <h4 class="text-center mt-4">จำนวนบุคลากร</h4>
+                    <div class="mb-3">
+                        <label class="form-label">ข้าราชการครู</label>
+                        <div class="row">
+                            <div class="col">
+                                <input type="number" class="form-control" name="teacherCount"
+                                    placeholder="จำนวนข้าราชการครู" required>
+                                <!-- <label for="teacherCount">จำนวน</label> -->
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" name="maleTeacherCount" placeholder="จำนวนชาย"
+                                    required>
+                                <!-- <label for="maleTeacherCount">ชาย</label> -->
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" name="femaleTeacherCount"
+                                    placeholder="จำนวนหญิง" required>
+                                <!-- <label for="femaleTeacherCount">หญิง</label> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="otherPersonnel" class="form-label">บุคลากรอื่น ๆ</label>
+                        <textarea id="otherPersonnel" class="form-control" rows="3"
+                            placeholder="กรอกชื่อบุคลากรอื่น ๆ"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="otherPersonnelCount" class="form-label">จำนวนบุคลากร</label>
+                        <input type="number" id="otherPersonnelCount" class="form-control" name="otherPersonnelCount"
+                            placeholder="กรอกจำนวนบุคลากร" required>
+                    </div>
+
+
+                    <!-- การจัดการศึกษา -->
+                    <h4 class="mt-4">การจัดการศึกษา</h4>
+                    <div class="mb-3">
+                        <label class="form-label">การจัดการศึกษา ระดับ</label><br>
+                        <input type="radio" id="kindergartenToPrimary6" name="educationLevel[]"
+                            value="อนุบาล – ชั้นประถมศึกษาปีที่ 6">
+                        <label for="kindergartenToPrimary6">อนุบาล – ชั้นประถมศึกษาปีที่ 6</label><br>
+
+                        <input type="radio" id="kindergartenToSecondary3" name="educationLevel[]"
+                            value="อนุบาล – ชั้นมัธยมศึกษาปีที่ 3">
+                        <label for="kindergartenToSecondary3">อนุบาล – ชั้นมัธยมศึกษาปีที่ 3</label><br>
+
+                        <input type="radio" id="secondary1To3" name="educationLevel[]"
+                            value="ชั้นมัธยมศึกษาปีที่ 1 – 3">
+                        <label for="secondary1To3">ชั้นมัธยมศึกษาปีที่ 1 – 3</label><br>
+
+                        <input type="radio" id="secondary1To6" name="educationLevel[]"
+                            value="ชั้นมัธยมศึกษาปีที่ 1 – 6">
+                        <label for="secondary1To6">ชั้นมัธยมศึกษาปีที่ 1 – 6</label><br>
+                    </div>
+
+                    <!-- การจัดชั้นเรียน -->
+                    <div class="mb-3">
+                        <h4 class="mt-4">การจัดชั้นเรียน</h4>
+                        <label for="totalStudents" class="form-label">จำนวนนักเรียนรวมทั้งสิ้น</label>
+                        <input type="number" id="totalStudents" class="form-control" name="totalStudents"
+                            placeholder="กรอกจำนวนนักเรียน" required>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label">จำนวนห้องเรียน</label>
+                        <br>
+                        <!-- ชั้นอนุบาล -->
+                        <label class="form-label">ชั้นอนุบาล 1 - 2</label>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="kg1">
+                            <label class="form-check-label" for="kg1">ชั้นอนุบาลปีที่ 1</label>
+                            <input type="number" class="form-control mt-2" placeholder="จำนวนห้อง">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="kg2">
+                            <label class="form-check-label" for="kg2">ชั้นอนุบาลปีที่ 2</label>
+                            <input type="number" class="form-control mt-2" placeholder="จำนวนห้อง">
+                        </div>
+                        <br>
+                        <!-- ชั้นประถม -->
+                        <label class="form-label">ชั้นประถม 1 - 6</label>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="p1">
+                            <label class="form-check-label" for="p1">ชั้นประถมศึกษาปีที่ 1</label>
+                            <input type="number" class="form-control mt-2" placeholder="จำนวนห้อง">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="p2">
+                            <label class="form-check-label" for="p2">ชั้นประถมศึกษาปีที่ 2</label>
+                            <input type="number" class="form-control mt-2" placeholder="จำนวนห้อง">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="p3">
+                            <label class="form-check-label" for="p3">ชั้นประถมศึกษาปีที่ 3</label>
+                            <input type="number" class="form-control mt-2" placeholder="จำนวนห้อง">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="p4">
+                            <label class="form-check-label" for="p4">ชั้นประถมศึกษาปีที่ 4</label>
+                            <input type="number" class="form-control mt-2" placeholder="จำนวนห้อง">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="p5">
+                            <label class="form-check-label" for="p5">ชั้นประถมศึกษาปีที่ 5</label>
+                            <input type="number" class="form-control mt-2" placeholder="จำนวนห้อง">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="p6">
+                            <label class="form-check-label" for="p6">ชั้นประถมศึกษาปีที่ 6</label>
+                            <input type="number" class="form-control mt-2" placeholder="จำนวนห้อง">
+                        </div>
+                        <br>
+                        <!-- ชั้นมัธยม -->
+                        <label class="form-label">ชั้นมัธยม 1 - 6</label>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="s1">
+                            <label class="form-check-label" for="s1">ชั้นมัธยมศึกษาปีที่ 1</label>
+                            <input type="number" class="form-control mt-2" placeholder="จำนวนห้อง">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="s2">
+                            <label class="form-check-label" for="s2">ชั้นมัธยมศึกษาปีที่ 2</label>
+                            <input type="number" class="form-control mt-2" placeholder="จำนวนห้อง">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="s3">
+                            <label class="form-check-label" for="s3">ชั้นมัธยมศึกษาปีที่ 3</label>
+                            <input type="number" class="form-control mt-2" placeholder="จำนวนห้อง">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="s4">
+                            <label class="form-check-label" for="s4">ชั้นมัธยมศึกษาปีที่ 4</label>
+                            <input type="number" class="form-control mt-2" placeholder="จำนวนห้อง">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="s5">
+                            <label class="form-check-label" for="s5">ชั้นมัธยมศึกษาปีที่ 5</label>
+                            <input type="number" class="form-control mt-2" placeholder="จำนวนห้อง">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="s6">
+                            <label class="form-check-label" for="s6">ชั้นมัธยมศึกษาปีที่ 6</label>
+                            <input type="number" class="form-control mt-2" placeholder="จำนวนห้อง">
+                        </div>
+                        <br>
+                        <button type="button" class="btn btn-primary w-100 py-3 shadow-lg rounded"
+                            id="saveDataBtn">บันทึกข้อมูล
+                        </button>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="Tab3" class="tabcontent">
+            <div class="container">
+                <div class="form-container">
+                    <div class="logo-form">
+                        <img src="/image/img01.png" alt="Logo" class="hero-logo-form">
+                    </div>
+                    <h5 class="text-center mt-4">รางวัล/เกียรติคุณที่โรงเรียนได้รับ (กรุณาแนบสำเนา)</h5>
+                    <div class="mb-3">
+                        <textarea class="form-control" rows="3" placeholder="กรอกรายละเอียดรางวัล"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">แนบไฟล์</label>
+                        <input type="file" class="form-control" id="file" title="แนบไฟล์">
+                    </div>
+                    <br>
+                    <button type="button" class="btn btn-primary w-100 py-3 shadow-lg rounded"
+                        id="saveAwardDataBtn">บันทึกข้อมูล
+                    </button>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div id="Tab4" class="tabcontent">
+            <div class="container">
+                <div class="form-container">
+                    <div class="logo-form">
+                        <img src="/image/img01.png" alt="Logo" class="hero-logo-form">
+                    </div>
+                    <!-- ความต้องการนักศึกษาฝึกปฏิบัติการสอนในสถานศึกษา -->
+                    <h5 class="text-center mt-4">ความต้องการนักศึกษาฝึกปฏิบัติการสอนในสถานศึกษา</h5>
+                    <div class="table-responsive">
+                        <table class="table table table-bordered">
+                            <tr>
+                                <th>สาขาวิชา</th>
+                                <th>จำนวนคน</th>
+                                <th>สอนระดับชั้น</th>
+                                <th>จำนวนครูพี่เลี้ยง<br>ที่มีคุณสมบัติ (คน)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>การศึกษาปฐมวัย</td>
+                                    <td><input type="number" id="preschool-1" name="preschool-1"
+                                            title="กรุณากรอกตัวเลข"></td>
+                                    <td><input type="text" id="preschool-2" name="preschool-2"
+                                            placeholder="สอนระดับชั้น"></td>
+                                    <td><input type="number" id="preschool-3" name="preschool-3"
+                                            title="กรุณากรอกตัวเลข"></td>
+                                </tr>
+                                <tr>
+                                    <td>การประถมศึกษา</td>
+                                    <td><input type="number" id="primary-1" name="primary-1" title="กรุณากรอกตัวเลข">
+                                    </td>
+                                    <td><input type="text" id="primary-2" name="primary-2" placeholder="สอนระดับชั้น">
+                                    </td>
+                                    <td><input type="number" id="primary-3" name="primary-3" title="กรุณากรอกตัวเลข">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ภาษาอังกฤษ</td>
+                                    <td><input type="number" id="english-1" name="english-1" title="กรุณากรอกตัวเลข">
+                                    </td>
+                                    <td><input type="text" id="english-2" name="english-2" placeholder="สอนระดับชั้น">
+                                    </td>
+                                    <td><input type="number" id="english-3" name="english-3" title="กรุณากรอกตัวเลข">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ภาษาไทย</td>
+                                    <td><input type="number" id="thai-1" name="thai-1" title="กรุณากรอกตัวเลข"></td>
+                                    <td><input type="text" id="thai-2" name="thai-2" placeholder="สอนระดับชั้น"></td>
+                                    <td><input type="number" id="thai-3" name="thai-3" title="กรุณากรอกตัวเลข"></td>
+                                </tr>
+                                <tr>
+                                    <td>สังคมศึกษา</td>
+                                    <td><input type="number" id="social-1" name="social-1" title="กรุณากรอกตัวเลข"></td>
+                                    <td><input type="text" id="social-2" name="social-2" placeholder="สอนระดับชั้น">
+                                    </td>
+                                    <td><input type="number" id="social-3" name="social-3" title="กรุณากรอกตัวเลข"></td>
+                                </tr>
+                                <tr>
+                                    <td>วิทยาศาสตร์ทั่วไป</td>
+                                    <td><input type="number" id="science-1" name="science-1" title="กรุณากรอกตัวเลข">
+                                    </td>
+                                    <td><input type="text" id="science-2" name="science-2" placeholder="สอนระดับชั้น">
+                                    </td>
+                                    <td><input type="number" id="science-3" name="science-3" title="กรุณากรอกตัวเลข">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>เคมี</td>
+                                    <td><input type="number" id="chemistry-1" name="chemistry-1"
+                                            title="กรุณากรอกตัวเลข"></td>
+                                    <td><input type="text" id="chemistry-2" name="chemistry-2"
+                                            placeholder="สอนระดับชั้น"></td>
+                                    <td><input type="number" id="chemistry-3" name="chemistry-3"
+                                            title="กรุณากรอกตัวเลข"></td>
+                                </tr>
+                                <tr>
+                                    <td>ชีววิทยา</td>
+                                    <td><input type="number" id="biology-1" name="biology-1" title="กรุณากรอกตัวเลข">
+                                    </td>
+                                    <td><input type="text" id="biology-2" name="biology-2" placeholder="สอนระดับชั้น">
+                                    </td>
+                                    <td><input type="number" id="biology-3" name="biology-3" title="กรุณากรอกตัวเลข">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ฟิสิกส์</td>
+                                    <td><input type="number" id="physics-1" name="physics-1" title="กรุณากรอกตัวเลข">
+                                    </td>
+                                    <td><input type="text" id="physics-2" name="physics-2" placeholder="สอนระดับชั้น">
+                                    </td>
+                                    <td><input type="number" id="physics-3" name="physics-3" title="กรุณากรอกตัวเลข">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>คณิตศาสตร์</td>
+                                    <td><input type="number" id="math-1" name="math-1" title="กรุณากรอกตัวเลข"></td>
+                                    <td><input type="text" id="math-2" name="math-2" placeholder="สอนระดับชั้น"></td>
+                                    <td><input type="number" id="math-3" name="math-3" title="กรุณากรอกตัวเลข"></td>
+                                </tr>
+                                <tr>
+                                    <td>คอมพิวเตอร์ศึกษา</td>
+                                    <td><input type="number" id="computer-1" name="computer-1" title="กรุณากรอกตัวเลข">
+                                    </td>
+                                    <td><input type="text" id="computer-2" name="computer-2" placeholder="สอนระดับชั้น">
+                                    </td>
+                                    <td><input type="number" id="computer-3" name="computer-3" title="กรุณากรอกตัวเลข">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>พลศึกษา</td>
+                                    <td><input type="number" id="pe-1" name="pe-1" title="กรุณากรอกตัวเลข"></td>
+                                    <td><input type="text" id="pe-2" name="pe-2" placeholder="สอนระดับชั้น"></td>
+                                    <td><input type="number" id="pe-3" name="pe-3" title="กรุณากรอกตัวเลข"></td>
+                                </tr>
+                                <tr>
+                                    <td>ศิลปศึกษา</td>
+                                    <td><input type="number" id="art-1" name="art-1" title="กรุณากรอกตัวเลข"></td>
+                                    <td><input type="text" id="art-2" name="art-2" placeholder="สอนระดับชั้น"></td>
+                                    <td><input type="number" id="art-3" name="art-3" title="กรุณากรอกตัวเลข"></td>
+                                </tr>
+                                <tr>
+                                    <td>ดนตรีศึกษา</td>
+                                    <td><input type="number" id="music-1" name="music-1" title="กรุณากรอกตัวเลข"></td>
+                                    <td><input type="text" id="music-2" name="music-2" placeholder="สอนระดับชั้น"></td>
+                                    <td><input type="number" id="music-3" name="music-3" title="กรุณากรอกตัวเลข"></td>
+                                </tr>
+                                <tr>
+                                    <td>นาฏศิลป์</td>
+                                    <td><input type="number" id="dance-1" name="dance-1" title="กรุณากรอกตัวเลข"></td>
+                                    <td><input type="text" id="dance-2" name="dance-2" placeholder="สอนระดับชั้น"></td>
+                                    <td><input type="number" id="dance-3" name="dance-3" title="กรุณากรอกตัวเลข"></td>
+                                </tr>
+                                <tr>
+                                    <td>อุตสาหกรรมศิลป์</td>
+                                    <td><input type="number" id="industrial-1" name="industrial-1"
+                                            title="กรุณากรอกตัวเลข"></td>
+                                    <td><input type="text" id="industrial-2" name="industrial-2"
+                                            placeholder="สอนระดับชั้น">
+                                    </td>
+                                    <td><input type="number" id="industrial-3" name="industrial-3"
+                                            title="กรุณากรอกตัวเลข"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <button type="button" class="btn btn-primary w-100 py-3 shadow-lg rounded"
+                            id="saveInternshipDataBtn">บันทึกข้อมูล
+                        </button>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="Tab5" class="tabcontent">
+            <div class="container">
+                <div class="form-container">
+                    <div class="logo-form">
+                        <img src="/image/img01.png" alt="Logo" class="hero-logo-form">
+                    </div>
+                    <!-- ข้อมูลครูที่จะเป็นครูพี่เลี้ยง -->
+                    <h4 class="text-center mt-4">ข้อมูลครูที่จะเป็นครูพี่เลี้ยง</h4>
+                    <div class="mb-3">
+                        <label class="form-label">จำนวนคน (ครูพี่เลี้ยง 1 ท่านดูแลนักศึกษา 1 คน)</label>
+                        <input type="number" class="form-control" name="teacher_count" placeholder="จำนวนครูพี่เลี้ยง"
+                            min="1" required>
+                    </div>
+
+                    <div class="container mt-5">
+                        <div class="card-body">
+                            <form method="post">
+                                <div class="mb-3">
+                                    <label for="arto" class="form-label">เลขที่:</label>
+                                    <input type="number" id="arto" name="arto" class="form-control"
+                                        placeholder="กรอกเลขที่" required autocomplete="off">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">ชื่อ - สกุล:</label>
+                                    <input type="text" id="name" name="name" class="form-control"
+                                        placeholder="กรอกชื่อ - สกุล" autocomplete="name" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="degree" class="form-label">วุฒิการศึกษา:</label>
+                                    <select id="degree" name="degree" class="form-select" aria-label="เลือกวุฒิการศึกษา"
+                                        required>
+                                        <option value="none" disabled selected>-- กรุณาเลือก --</option>
+                                        <option value="ปริญญาตรี">ปริญญาตรี</option>
+                                        <option value="ปริญญาโท">ปริญญาโท</option>
+                                        <option value="ปริญญาเอก">ปริญญาเอก</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="major" class="form-label">วิชาเอก:</label>
+                                    <select id="major" name="major" class="form-select" aria-label="เลือกวิชาเอก"
+                                        required>
+                                        <option value="none" disabled selected>-- กรุณาเลือก --</option>
+                                        <option value="การศึกษาปฐมวัย">การศึกษาปฐมวัย</option>
+                                        <option value="การประถมศึกษา">การประถมศึกษา</option>
+                                        <option value="ภาษาอังกฤษ">ภาษาอังกฤษ</option>
+                                        <option value="ภาษาไทย">ภาษาไทย</option>
+                                        <option value="สังคมศึกษา">สังคมศึกษา</option>
+                                        <option value="วิทยาศาสตร์ทั่วไป">วิทยาศาสตร์ทั่วไป</option>
+                                        <option value="เคมี">เคมี</option>
+                                        <option value="ชีววิทยา">ชีววิทยา</option>
+                                        <option value="ฟิสิกส์">ฟิสิกส์</option>
+                                        <option value="คณิตศาสตร์">คณิตศาสตร์</option>
+                                        <option value="คอมพิวเตอร์ศึกษา">คอมพิวเตอร์ศึกษา</option>
+                                        <option value="พลศึกษา">พลศึกษา</option>
+                                        <option value="ศิลปศึกษา">ศิลปศึกษา</option>
+                                        <option value="ดนตรีศึกษา">ดนตรีศึกษา</option>
+                                        <option value="นาฏศิลป์">นาฏศิลป์</option>
+                                        <option value="อุตสาหกรรมศิลป์">อุตสาหกรรมศิลป์</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">เป็นครูพี่เลี้ยงวิชา:</label>
+                                    <select id="assistant_subject" name="assistant_subject" class="form-select"
+                                        aria-label="เป็นครูพี่เลี้ยงวิชา" required>
+                                        <option value="none" disabled selected>-- กรุณาเลือก --</option>
+                                        <option value="การศึกษาปฐมวัย">การศึกษาปฐมวัย</option>
+                                        <option value="การประถมศึกษา">การประถมศึกษา</option>
+                                        <option value="ภาษาอังกฤษ">ภาษาอังกฤษ</option>
+                                        <option value="ภาษาไทย">ภาษาไทย</option>
+                                        <option value="สังคมศึกษา">สังคมศึกษา</option>
+                                        <option value="วิทยาศาสตร์ทั่วไป">วิทยาศาสตร์ทั่วไป</option>
+                                        <option value="เคมี">เคมี</option>
+                                        <option value="ชีววิทยา">ชีววิทยา</option>
+                                        <option value="ฟิสิกส์">ฟิสิกส์</option>
+                                        <option value="คณิตศาสตร์">คณิตศาสตร์</option>
+                                        <option value="คอมพิวเตอร์ศึกษา">คอมพิวเตอร์ศึกษา</option>
+                                        <option value="พลศึกษา">พลศึกษา</option>
+                                        <option value="ศิลปศึกษา">ศิลปศึกษา</option>
+                                        <option value="ดนตรีศึกษา">ดนตรีศึกษา</option>
+                                        <option value="นาฏศิลป์">นาฏศิลป์</option>
+                                        <option value="อุตสาหกรรมศิลป์">อุตสาหกรรมศิลป์</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">ระดับชั้น:</label>
+                                    <select id="level" name="level" class="form-select" aria-label="ระดับชั้น" required>
+                                        <option value="none" disabled selected>-- กรุณาเลือก --</option>
+                                        <option value="ปฐมวัย">ปฐมวัย</option>
+                                        <option value="ประถมต้น">ประถมต้น</option>
+                                        <option value="ประถมปลาย">ประถมปลาย</option>
+                                        <option value="มัธยมต้น">มัธยมต้น</option>
+                                        <option value="มัธยมปลาย">มัธยมปลาย</option>
+                                    </select>
+                                </div>
+                                <br>
+                                <button type="submit" id="newSaveButton"
+                                    class="btn btn-primary w-100 py-3 shadow-lg rounded"> บันทึกข้อมูล
+                                </button>
+                                <br>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <footer id="footer" class="footer-1">
+            <div class="container footer-container">
+                <!-- Left Section -->
+                <div class="footer-left">
+                    <h1>แบบฟอร์มข้อมูลโรงเรียน</h1>
+                    <p>คณะครุศาสตร์ <br> มหาวิทยาลัยราชภัฏเลย</p>
+                    <div class="social-icons">
+                        <a href="#" target="_blank" rel="noopener noreferrer">
+                            <img src="https://www.paiduaykan.com/wp-content/uploads/2024/05/facebook.svg"
+                                alt="Facebook">
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer">
+                            <img src="https://www.paiduaykan.com/wp-content/uploads/2024/05/tik-tok.svg" alt="TikTok">
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                                alt="Instagram">
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer">
+                            <img src="https://www.paiduaykan.com/wp-content/uploads/2024/05/youtube.svg" alt="YouTube">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-right">
+                    <p><strong>ติดต่อเรา :</strong></p>
+                    <p>E-mail: xxxxxxxxx@gmail.com</p>
+                </div>
+            </div>
+            <br>
+            <br>
+
+            <hr>
+
+            <p class="text-secondary">Developed and maintained by Nuengdiao Tiaksiboon, Full-Stack Developer</p>
+            <p class="text-secondary">
+                © 2025 NanoDev . /
+                <a href="#">Terms of Use</a> /
+                <a href="#">Privacy Policy</a> /
+                <a href="#">Code of Conduct</a> /
+                <a href="#">System Status</a>
+            </p>
+        </footer>
+        <script src="/js/script.js" defer></script>
+        <script>
+            // ฟังก์ชันสำหรับดึงข้อมูลจังหวัด, อำเภอ และตำบล
+            document.addEventListener("DOMContentLoaded", function () {
+                // ดึงข้อมูลจังหวัด
+                fetch("https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_province_with_amphure_tambon.json")
+                    .then(response => response.json())
+                    .then(data => {
+                        const provinceSelect = document.getElementById("province");
+                        data.forEach(province => {
+                            const option = document.createElement("option");
+                            option.value = province.id;
+                            option.textContent = province.name_th;
+                            provinceSelect.appendChild(option);
+                        });
+                    });
+
+                // ฟังก์ชันอัปเดตอำเภอ
+                window.updateAmphur = function () {
+                    const provinceId = document.getElementById("province").value;
+                    const districtSelect = document.getElementById("district");
+                    districtSelect.innerHTML = "<option value=''>เลือกอำเภอ</option>"; // เคลียร์อำเภอเก่า
+
+                    if (provinceId) {
+                        fetch("https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_province_with_amphure_tambon.json")
+                            .then(response => response.json())
+                            .then(data => {
+                                const province = data.find(p => p.id == provinceId);
+                                province.amphure.forEach(amphure => {
+                                    const option = document.createElement("option");
+                                    option.value = amphure.id;
+                                    option.textContent = amphure.name_th;
+                                    districtSelect.appendChild(option);
+                                });
+                            });
+                    }
+                };
+
+                // ฟังก์ชันอัปเดตตำบล
+                window.updateTambon = function () {
+                    const amphureId = document.getElementById("district").value;
+                    const subdistrictSelect = document.getElementById("subdistrict");
+                    subdistrictSelect.innerHTML = "<option value=''>เลือกตำบล</option>"; // เคลียร์ตำบลเก่า
+
+                    if (amphureId) {
+                        const provinceId = document.getElementById("province").value;
+                        fetch("https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_province_with_amphure_tambon.json")
+                            .then(response => response.json())
+                            .then(data => {
+                                const province = data.find(p => p.id == provinceId);
+                                const amphure = province.amphure.find(a => a.id == amphureId);
+                                amphure.tambon.forEach(tambon => {
+                                    const option = document.createElement("option");
+                                    option.value = tambon.id;
+                                    option.textContent = tambon.name_th;
+                                    subdistrictSelect.appendChild(option);
+                                });
+                            });
+                    }
+                };
+            });
+
+            // ควบคุมแท็บ ทั้ง 5 
+            function openTab(evt, tabName) {
+                var i, tabcontent, tablinks;
+
+                // ซ่อนเนื้อหาแท็บทั้งหมด
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+
+                // เอา class 'active' ออกจากปุ่มทั้งหมด
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+
+                // แสดงเนื้อหาของแท็บที่ถูกเลือก
+                document.getElementById(tabName).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+            // เปิดแท็บแรกเป็นค่าเริ่มต้น
+            document.getElementsByClassName("tablinks")[0].click();
+
+
+            //ปุ่มบันทึกข้อมูล แท็บ 2
+            document.getElementById("saveDataBtn").addEventListener("click", function () {
+                let formData = {
+                    teacherCount: document.querySelector("[name='teacherCount']").value,
+                    maleTeacherCount: document.querySelector("[name='maleTeacherCount']").value,
+                    femaleTeacherCount: document.querySelector("[name='femaleTeacherCount']").value,
+                    otherPersonnel: document.getElementById("otherPersonnel").value,
+                    otherPersonnelCount: document.getElementById("otherPersonnelCount").value,
+                    totalStudents: document.getElementById("totalStudents").value,
+                    educationLevel: document.querySelector("[name='educationLevel[]']:checked")?.value || "",
+                    classRooms: {}
+                };
+
+                // ดึงค่าจาก checkbox และจำนวนห้องเรียน
+                document.querySelectorAll(".form-check-input").forEach((checkbox) => {
+                    if (checkbox.checked) {
+                        let inputBox = checkbox.parentElement.querySelector(".form-control");
+                        formData.classRooms[checkbox.id] = inputBox ? inputBox.value : 0;
+                    }
+                });
+
+                // ส่งข้อมูลไปยังเซิร์ฟเวอร์
+                fetch("/save-personnel-data", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                })
+                    .then(response => response.json())
+                    .then(data => alert("บันทึกข้อมูลสำเร็จ!"))
+                    .catch(error => alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล!"));
+            });
+
+
+            //ปุ่มบันทึกข้อมูล แท็บ 3
+            document.getElementById("saveAwardDataBtn").addEventListener("click", function () {
+                let formData = new FormData();
+                let awardDetails = document.querySelector("#Tab3 textarea").value;
+                let fileInput = document.getElementById("file").files[0];
+
+                formData.append("awardDetails", awardDetails);
+                if (fileInput) {
+                    formData.append("file", fileInput);
+                }
+
+                // ส่งข้อมูลไปยังเซิร์ฟเวอร์
+                fetch("/save-award-data", {
+                    method: "POST",
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => alert("บันทึกข้อมูลสำเร็จ!"))
+                    .catch(error => alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล!"));
+            });
+
+            //ปุ่มบันทึกข้อมูล แท็บ 4
+            document.getElementById("saveInternshipDataBtn").addEventListener("click", function () {
+                let formData = {};
+
+                // ดึงค่าจากทุก input field
+                let rows = document.querySelectorAll("#Tab4 tbody tr");
+                rows.forEach(row => {
+                    let subject = row.cells[0].innerText.trim(); // ชื่อสาขาวิชา
+                    let numStudents = row.cells[1].querySelector("input").value || 0;
+                    let teachingLevel = row.cells[2].querySelector("input").value || "";
+                    let numMentors = row.cells[3].querySelector("input").value || 0;
+
+                    formData[subject] = {
+                        numStudents: parseInt(numStudents),
+                        teachingLevel: teachingLevel,
+                        numMentors: parseInt(numMentors)
+                    };
+                });
+
+                // ส่งข้อมูลไปยังเซิร์ฟเวอร์
+                fetch("/save-internship-data", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                })
+                    .then(response => response.json())
+                    .then(data => alert("บันทึกข้อมูลสำเร็จ!"))
+                    .catch(error => alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล!"));
+            });
+
+            //ปุ่มบันทึกข้อมูล แท็บ 5
+            document.getElementById("newSaveButton").addEventListener("click", function (event) {
+                event.preventDefault(); // ป้องกันการรีเฟรชหน้า
+
+                // ทำการเก็บข้อมูลจากฟอร์มหรือทำสิ่งที่ต้องการเมื่อคลิกปุ่ม
+                let teacherCount = document.querySelector("[name='teacher_count']").value;
+
+                if (teacherCount) {
+                    alert("ข้อมูลได้ถูกบันทึกแล้ว: จำนวนครูพี่เลี้ยง " + teacherCount + " ท่าน");
+                    // ที่นี่สามารถทำการบันทึกข้อมูลลงฐานข้อมูลหรือดำเนินการอื่นๆ
+                } else {
+                    alert("กรุณากรอกจำนวนครูพี่เลี้ยง");
+                }
+            });
+        </script>
+    </body>
+
+</html>
